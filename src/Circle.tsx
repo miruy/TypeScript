@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
  
 interface CircleProps {
@@ -19,10 +20,15 @@ const Container = styled.div<ContainerProps>`
   border: 1px solid ${props => props.borderColor};
 `;
 
-// text = "default text" : Circle의 props 중 text는 필수가 아니므로 null = default text / not null = 해당 props를 표시
+
 function Circle({ bgColor, borderColor, text = "default text" }: CircleProps) {
+   
+    // TypeScript는 정의된 초기값으로 데이터의 type을 추론함
+    // useState<number|string>(0) : 초기값은 0(number)이지만, number 또는 string으로 사용될 수 있음을 의미
+    const [value, setValue] = useState<number|string>(0);
+    
+
     return (
-        // borderColor ?? bgColor : 테두리 색 여부는 사용자가 선택(optional,?)하는데, not null =borderColor / null = bgColor표시
     <Container bgColor={bgColor} borderColor={borderColor ?? bgColor}>
         {text}
     </Container>
