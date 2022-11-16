@@ -8,8 +8,8 @@ const Container = styled.div`
 
 const H1 = styled.h1`
   color: ${props => props.theme.textColor};
-`;
-
+`; 
+ 
 function App() {
   return (
     <Container>
